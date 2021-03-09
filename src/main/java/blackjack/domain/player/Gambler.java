@@ -6,13 +6,11 @@ import blackjack.domain.card.Score;
 
 public class Gambler implements Player{
 
-    private static final int NUMBER_OF_INITIAL_CARDS = 2;
-
     private final Name name;
     private final Cards cards;
 
-    public Gambler(final Name name){
-        this.name= name;
+    public Gambler(final String name){
+        this.name = new Name(name);
         this.cards = new Cards();
     }
 
@@ -29,17 +27,42 @@ public class Gambler implements Player{
     }
 
     @Override
-    public Name getName() {
-        return name;
+    public boolean isBust() {
+        return cards.isBust();
     }
 
     @Override
-    public Score getScore() {
-        return cards.getScore();
+    public boolean isBlackJack() {
+        return cards.isBlackJack();
     }
 
     @Override
-    public Cards getCards() {
+    public boolean isTwentyOne() {
+        return cards.isTwentyOne();
+    }
+
+    @Override
+    public Cards cards() {
         return cards;
+    }
+
+    @Override
+    public String name() {
+        return name.getName();
+    }
+
+    @Override
+    public Score score(){
+        return cards.totalScore();
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }

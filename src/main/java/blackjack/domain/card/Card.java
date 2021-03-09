@@ -2,12 +2,14 @@ package blackjack.domain.card;
 
 import java.util.*;
 
+import static blackjack.domain.card.Denomination.*;
+
 public class Card {
 
     private static final List<Card> cards = new ArrayList<>();
     static {
         for(Suit suit : Suit.values()){
-            Arrays.stream(Denomination.values())
+            Arrays.stream(values())
                     .forEach(denomination -> cards.add(new Card(suit, denomination)));
         }
     }
@@ -30,16 +32,20 @@ public class Card {
         return new LinkedList<>(cards);
     }
 
-    public Denomination getDenomination() {
-        return denomination;
+    public String denomination() {
+        return denomination.getDenomination();
     }
 
-    public Suit getSuit() {
-        return suit;
+    public Score getCardScore(){
+        return denomination.getScore();
+    }
+
+    public String suit() {
+        return suit.getSuit();
     }
 
     public boolean isAce(){
-        return denomination == Denomination.ACE;
+        return denomination == ACE;
     }
 
     @Override

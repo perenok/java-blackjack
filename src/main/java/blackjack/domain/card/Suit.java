@@ -26,7 +26,7 @@ public enum Suit {
     }
 
 
-    public String suit() {
+    public String getSuit() {
         return suit;
     }
 }

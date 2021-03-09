@@ -8,7 +8,6 @@ public enum YesOrNo {
         if(input.equalsIgnoreCase("y")){
             return YES;
         }
-
         if(input.equalsIgnoreCase("n")){
             return NO;
         }

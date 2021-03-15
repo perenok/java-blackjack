@@ -40,7 +40,16 @@ public class Result {
         return Collections.unmodifiableMap(gamblerResults);
     }
 
-    public Dealer getDealerInfo() {
+    public Dealer getDealer() {
         return dealer;
+    }
+
+    public String getDealerName() {
+        return dealer.name();
+    }
+
+    public int getDealerMoney() {
+        return dealer.money()
+                .getBettingMoney();
     }
 }

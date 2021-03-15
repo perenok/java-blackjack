@@ -53,7 +53,9 @@ public class OutputView {
     }
 
     private static String getCardInfo(final Player player) {
-        return player.cards().getCards().stream()
+        return player.cards()
+                .getCards()
+                .stream()
                 .map(card -> card.denomination() + card.suit())
                 .collect(Collectors.joining(", "));
     }
@@ -88,8 +90,10 @@ public class OutputView {
     }
 
     private static void printDealerResult(final Result result) {
-        Dealer dealer = result.getDealerInfo();
-        String dealerCardInfo = dealer.cards().getCards().stream()
+        Dealer dealer = result.getDealer();
+        String dealerCardInfo = dealer.cards()
+                .getCards()
+                .stream()
                 .map(card -> card.denomination() + card.suit())
                 .collect(Collectors.joining(", "));
         printNewLine();
@@ -99,7 +103,7 @@ public class OutputView {
 
     private static void printFinalWinningResult(final Result result) {
         printMessage("## 최종 수익");
-        printMessageByFormat(PROFIT_RESULT, result.getDealerInfo().name(), result.getDealerInfo().money().getBettingMoney());
+        printMessageByFormat(PROFIT_RESULT, result.getDealerName(), result.getDealerMoney());
 
         result.getGamblerResult()
                 .forEach((key, value) -> printMessageByFormat(PROFIT_RESULT, key.name(), key.money().getBettingMoney()));
